@@ -1,5 +1,5 @@
 import { galleryItems } from './gallery-items.js';
-import * as basicLightbox from '../dist/basicLightbox.min.js'
+import * as basicLightbox from 'https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js'
 // Change code below this line
 const ref = {
     containerForGallery: document.querySelector('.gallery'),
@@ -37,6 +37,7 @@ function openModalWindow (event) {
         <a>Close</a>
     </div>
 `)
+console.log(instance)
 
 instance.show()
 }
