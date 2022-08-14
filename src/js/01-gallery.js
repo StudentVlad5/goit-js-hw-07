@@ -30,15 +30,14 @@ function openModalWindow (event) {
     // if(event.target.value !== ".gallery__link"){return}
     console.log(event.target.dataset.source);
     event.preventDefault();
-
-    const instance = basicLightbox.create(`
-    <div class="modal">
-    <img src="${event.target.dataset.source}" width="800" height="600">
-        <a>Close</a>
-    </div>
-`)
-console.log(instance)
-
-instance.show()
+	// basicLightbox.create(`
+	// 	<img width="1400" height="900" src="${event.target.dataset.source}">
+	// `).show()
 }
+document.querySelector('.gallery').onclick = () => {
 
+	basicLightbox.create(`
+		<img width="1400" height="900" src="https://placehold.it/1400x900">
+	`).show()
+
+}
