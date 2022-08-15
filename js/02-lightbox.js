@@ -27,5 +27,6 @@ ref.containerForGallery.innerHTML = galleryItem;
 
 
 new SimpleLightbox('.gallery__link', { 
-    
+    overlay: true,
+    captions: true, 
  });
