@@ -27,14 +27,25 @@ ref.containerForGallery.addEventListener(`click`,openModalWindow)
 
 function openModalWindow (event) {
     console.log(event.target.dataset.source);
-    document.querySelector('.gallery').onclick = () => {
     event.preventDefault();
-	basicLightbox.create(`
+	const instance = basicLightbox.create(`
     <div class="modal">
     <img src="${event.target.dataset.source}" width="800" height="600">
     </div>
-	`).show()
-}}
+	`);
+    instance.show();
+    window.addEventListener('keydown', function(e){
+
+        if(!basicLightbox.visible()){return};
+        if(e.key=='Escape'||e.key=='Esc'||e.keyCode==27){
+            e.preventDefault();
+            instance.close();
+        }
+    });
+
+}
+
+
 
 
 
