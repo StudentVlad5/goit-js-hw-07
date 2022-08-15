@@ -1,5 +1,5 @@
 import { galleryItems } from './gallery-items.js';
-import SimpleLightbox from "../node_modules/simplelightbox/dist/simple-lightbox.esm.js"
+
 // Change code below this line
 
 console.log(galleryItems);
@@ -27,6 +27,6 @@ ref.containerForGallery.innerHTML = galleryItem;
 
 
 new SimpleLightbox('.gallery__link', { 
-    overlay: true,
-    captions: true, 
+ 
+
  });
