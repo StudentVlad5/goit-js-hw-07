@@ -31,6 +31,16 @@ function openModalWindow (event) {
 	`);
     instance.show();
     
+    let imgPicture = document.querySelector('.modal');
+    imgPicture.addEventListener('click', closeModalWindow);
+
+    function closeModalWindow(event){
+        event.preventDefault();
+        instance.close();
+        window.removeEventListener('keydown', usingEsc);
+        window.removeEventListener('click', closeModalWindow);
+    }
+
     window.addEventListener('keydown', usingEsc);
     function usingEsc(e){
         if(!basicLightbox.visible()){return};
@@ -38,6 +48,7 @@ function openModalWindow (event) {
             e.preventDefault();
             instance.close();
             window.removeEventListener('keydown', usingEsc);
+            window.removeEventListener('click', closeModalWindow);
         }
 }}
 
