@@ -1,13 +1,11 @@
 import { galleryItems } from './gallery-items.js';
-console.log(galleryItems);
 // Change code below this line
 
 const ref = {
     containerForGallery: document.querySelector('.gallery'),
 }
-
 let galleryItem = '';
-const buildGallery = galleryItems.map((key)=>{
+galleryItems.map((key)=>{
      galleryItem += `
         <div class="gallery__item">
         <a class="gallery__link" href="#">
@@ -24,9 +22,7 @@ const buildGallery = galleryItems.map((key)=>{
 ref.containerForGallery.insertAdjacentHTML("afterbegin", galleryItem)
 
 ref.containerForGallery.addEventListener(`click`,openModalWindow)
-
 function openModalWindow (event) {
-    console.log(event.target.dataset.source);
     event.preventDefault();
 	const instance = basicLightbox.create(`
     <div class="modal">
@@ -34,16 +30,16 @@ function openModalWindow (event) {
     </div>
 	`);
     instance.show();
-    window.addEventListener('keydown', function(e){
-
+    
+    window.addEventListener('keydown', usingEsc);
+    function usingEsc(e){
         if(!basicLightbox.visible()){return};
-        if(e.key=='Escape'||e.key=='Esc'||e.keyCode==27){
+        if(e.key=='Escape'||e.key=='Esc'){
             e.preventDefault();
             instance.close();
+            window.removeEventListener('keydown', usingEsc);
         }
-    });
-
-}
+}}
 
 
 
