@@ -1,17 +1,56 @@
-function getShippingMessage(country, price, deliveryFee) {
-  return country.length > 0 &&
-    !isNaN(Number(price)) &&
-    !isNaN(Number(deliveryFee))
-    ? `Shipping to ${country} will cost ${price + deliveryFee} credits`
-    : "Wrong parameters";
-}
+//Завдання 2 Напиши скрипт для створення галереї зображень на основі масиву даних. HTML містить список ul.gallery.
 
-let resultText = "";
+const images = [
+  {
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
+  },
+  {
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+  },
+  {
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",
+    alt: "Alpine Spring Meadows",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",
+    alt: "Nature Landscape",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
+    alt: "Lighthouse Coast Sea",
+  },
+];
 
-resultText += `<li>${getShippingMessage("Australia", 120, 50)}</li>`;
-resultText += `<li>${getShippingMessage("Germany", 80, 20)}</li>`;
-resultText += `<li>${getShippingMessage("Sweden", 100, 20)}</li>`;
+const listGalleryElem = document.querySelector("ul.gallery");
+listGalleryElem.style.display = "flex";
+listGalleryElem.style.justifyContent = "center";
+listGalleryElem.style.flexWrap = "wrap";
+listGalleryElem.style.flexDirection = "row";
+listGalleryElem.style.gap = "10px";
 
-console.log(getShippingMessage("Australia", 120, 50));
-console.log(getShippingMessage("Germany", 80, 20));
-console.log(getShippingMessage("Sweden", 100, 20));
+let htmlString = "";
+if (Array.isArray(images))
+  images.forEach((it) => {
+    let liGalleryElem = document.createElement("li");
+    liGalleryElem.classList.add("img-gallery");
+    liGalleryElem.style.listStyle = "none";
+    liGalleryElem.style.minHeight = "130px";
+    liGalleryElem.style.objectFit = "cover";
+
+    const imgEL = document.createElement("img");
+    imgEL.src = it.url;
+    imgEL.alt = it.alt;
+    imgEL.style.width = "200px";
+    imgEL.style.height = "100%";
+
+    liGalleryElem.appendChild(imgEL);
+    htmlString += liGalleryElem.outerHTML;
+  });
+
+listGalleryElem.insertAdjacentHTML("beforeend", htmlString);

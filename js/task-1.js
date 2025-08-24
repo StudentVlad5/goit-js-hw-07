@@ -1,17 +1,11 @@
-function makeTransaction(quantity, pricePerDroid) {
-  return !isNaN(Number(quantity)) && !isNaN(Number(pricePerDroid))
-    ? `You ordered ${quantity} droids worth ${
-        quantity * pricePerDroid
-      } credits!`
-    : "Wrong Params";
-}
+//Завдання 1
 
-let resultText = "";
-
-resultText += `<li>${makeTransaction(5, 3000)}</li>`;
-resultText += `<li>${makeTransaction(3, 1000)}</li>`;
-resultText += `<li>${makeTransaction(10, 500)}</li>`;
-
-console.log(makeTransaction(5, 3000));
-console.log(makeTransaction(3, 1000));
-console.log(makeTransaction(10, 500));
+const list = document.querySelector("#categories");
+const items = list.querySelectorAll(".item");
+console.log(`Number of categories: ${items.length}`);
+items.forEach((it) => {
+  const h2 = it.querySelector("h2");
+  if (h2) console.log(`Category: ${h2.textContent}`);
+  const quantityItems = it.querySelectorAll("li");
+  if (quantityItems) console.log(`Elements: ${quantityItems.length}`);
+});
